@@ -36,11 +36,11 @@ const ShareTip = () => {
         })
     }
     return (
-        <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow rounded">
-            <h2 className="text-2xl font-semibold mb-4">➕ Share a Garden Tip</h2>
+        <div className="max-w-5xl mx-auto mt-10 p-6 bg-gray-200 shadow rounded bg-">
+            <h2 className="text-2xl font-semibold mb-4 text-green-950">➕ Share a Garden Tip</h2>
 
             <form onSubmit={handleSubmit}>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 bg-green-900'>
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                         <label className="label">Title</label>
                         <input type="text" name='Title' className="input w-full" placeholder="Title " />
