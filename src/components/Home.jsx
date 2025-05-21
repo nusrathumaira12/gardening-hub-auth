@@ -1,12 +1,15 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import TipCard from './TipCard';
+import FeaturedGardeners from './FeaturedGardeners';
 
 const Home = () => {
     const tips = useLoaderData()
     console.log(tips)
     return (
-        <div className="overflow-x-auto border-2 border-amber-600">
+        <div>
+          <FeaturedGardeners></FeaturedGardeners>
+          <div className="overflow-x-auto border-2 border-amber-600">
 
 
 <table className="table w-full ">
@@ -28,6 +31,7 @@ const Home = () => {
                 }
           </tbody>
           </table>
+        </div>
         </div>
     );
 };
