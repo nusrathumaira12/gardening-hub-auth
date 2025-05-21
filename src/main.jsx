@@ -17,6 +17,7 @@ import TipCard from './components/TipCard.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import ExploreGardeners from './components/ExploreGardeners.jsx';
+import AuthProvider from './contexts/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -74,7 +75,9 @@ Component: Login
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+      <AuthProvider>
       <RouterProvider router={router} />
+      </AuthProvider>
 
   </StrictMode>,
 )
