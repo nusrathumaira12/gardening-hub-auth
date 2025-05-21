@@ -14,6 +14,9 @@ import AddGardener from './components/AddGardener.jsx';
 import ActiveGardener from './components/ActiveGardener.jsx';
 import ShareTip from './components/ShareTip.jsx';
 import TipCard from './components/TipCard.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+import ExploreGardeners from './components/ExploreGardeners.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,14 @@ const router = createBrowserRouter([
       index: true,
       loader: ()=> fetch('http://localhost:3000/tips'),
       Component: Home
+    },
+    {
+      path: 'explore-gardeners',
+      Component: ExploreGardeners
+    },
+    {
+      path: 'browseTips',
+      Component: TipCard
     },
     {
 path: 'addTips',
@@ -48,6 +59,14 @@ Component: AddTips
       path: 'shareTip',
       Component: ShareTip
     },
+    {
+path: 'login',
+Component: Login
+    },
+    {
+      path: 'register',
+      Component: Register
+    }
    
    ]
   },
