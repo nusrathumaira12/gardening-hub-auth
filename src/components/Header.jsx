@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 const Header = () => {
    const {user} =useContext(AuthContext)
+   console.log(user)
     const navigate = useNavigate()
     const {pathname} = useLocation()
     console.log(pathname)

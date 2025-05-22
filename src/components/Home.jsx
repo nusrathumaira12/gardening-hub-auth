@@ -2,12 +2,14 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import TipCard from './TipCard';
 import FeaturedGardeners from './FeaturedGardeners';
+import Banner from './Banner';
 
 const Home = () => {
     const tips = useLoaderData()
     console.log(tips)
     return (
         <div>
+          <Banner></Banner>
           <FeaturedGardeners></FeaturedGardeners>
           <div className="overflow-x-auto border-2 border-amber-600">
 

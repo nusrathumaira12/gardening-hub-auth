@@ -19,6 +19,8 @@ import Register from './components/Register.jsx';
 import ExploreGardeners from './components/ExploreGardeners.jsx';
 import AuthProvider from './contexts/AuthProvider.jsx';
 import FeaturedGardeners from './components/FeaturedGardeners.jsx';
+import Header from './components/Header.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -53,11 +55,11 @@ Component: AddTips
       path: 'activeGardener',
       Component: ActiveGardener
     },
-    {
-path: '/',
-Component: FeaturedGardeners
+//     {
+// path: '/',
+// Component: FeaturedGardeners
 
-    },
+//     },
     {
       path: 'addGardener',
       Component: AddGardener
