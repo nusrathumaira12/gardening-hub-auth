@@ -44,7 +44,7 @@ const Header = () => {
    
     return (
         <header className="p-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 font-semibold shadow">
-	<div className="container flex justify-between h-16 mx-auto">
+	<div className="container flex justify-between h-20 mx-auto">
 <div className='flex text-3xl font-bold items-center pt-3 text-green-900 dark:text-green-400'>
     <span className='text-green-900  text-4xl '><PiPlant /></span>Green<span className='text-amber-400'>T</span>alks
 </div>
@@ -67,7 +67,7 @@ const Header = () => {
 			<li className="flex">
 				<NavLink
                 className="flex items-center px-4 -mb-1   text-gray-500  border-green-600"
-                to="/browseTips"
+                to="/browse-tips"
                 > Browse Tips</NavLink>
 			</li>
 			{
@@ -109,7 +109,7 @@ const Header = () => {
             <img
                 src={user.photoURL || "/user.png"}
                 alt="Profile"
-                className="w-10 h-10 rounded-full cursor-pointer border-2 border-amber-400"
+                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400"
                 data-tooltip-id="profile-tooltip"
                 data-tooltip-content={user.displayName || "User"}
                 onClick={() => setDropdownOpen(!dropdownOpen)}

@@ -20,6 +20,7 @@ import ExploreGardeners from './components/ExploreGardeners.jsx';
 import AuthProvider from './contexts/AuthProvider.jsx';
 import FeaturedGardeners from './components/FeaturedGardeners.jsx';
 import Header from './components/Header.jsx';
+import BrowseTips from './components/BrowseTips.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,8 +38,11 @@ const router = createBrowserRouter([
       Component: ExploreGardeners
     },
     {
-      path: 'browseTips',
-      Component: TipCard
+      path: "/browse-tips",
+     Component: BrowseTips,
+      loader:  () => fetch('http://localhost:3000/tips')
+        
+      
     },
     {
 path: 'addTips',
@@ -55,11 +59,7 @@ Component: AddTips
       path: 'activeGardener',
       Component: ActiveGardener
     },
-//     {
-// path: '/',
-// Component: FeaturedGardeners
 
-//     },
     {
       path: 'addGardener',
       Component: AddGardener

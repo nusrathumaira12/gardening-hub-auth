@@ -21,8 +21,10 @@ fetch("http://localhost:3000/gardeners")
 
 if (loading) {
     return (
-    <div className="text-center py-10 text-green-600">
+    <div className="text-center py-10 text-green-600 flex justify-center items-center h-30 font-bold gap-2">
 
+        <DotLoader color="#22c55e" size={50}></DotLoader>
+        <DotLoader color="#22c55e" size={50}></DotLoader>
         <DotLoader color="#22c55e" size={50}></DotLoader>
     </div>
     );
