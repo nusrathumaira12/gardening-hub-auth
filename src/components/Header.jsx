@@ -1,27 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { PiPlant } from 'react-icons/pi';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext';
+import { Tooltip } from 'react-tooltip';
+import Swal from 'sweetalert2';
 
 const Header = () => {
-   const {user} =useContext(AuthContext)
-   console.log(user)
-    const navigate = useNavigate()
+   const {user, logout} =useContext(AuthContext)
+   const [dropdownOpen, setDropdownOpen] = useState(false);
+   const dropdownRef = useRef();
+   const navigate = useNavigate()
     const {pathname} = useLocation()
-    console.log(pathname)
-    // const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
+
+   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
 
-    // useEffect(() => {
-    //     const root = window.document.documentElement;
-    //     if (isDark) {
-    //       root.classList.add("dark");
-    //       localStorage.setItem("theme", "dark");
-    //     } else {
-    //       root.classList.remove("dark");
-    //       localStorage.setItem("theme", "light");
-    //     }
-    //   }, [isDark]);
+  const handleLogout = () => {
+    logout().then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged out successfully!',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      setDropdownOpen(false);
+      navigate('/');
+    });
+  };
+
+
+
+  
+    
+   
+   
     return (
         <header className="p-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 font-semibold shadow">
 	<div className="container flex justify-between h-16 mx-auto">
@@ -73,20 +93,43 @@ const Header = () => {
 		
 		</ul>
 
-		<div className="items-center flex-shrink-0 hidden lg:flex">
+        <div className="relative flex items-center space-x-3" ref={dropdownRef}>
+        {!user ? (
 
-  {/* Theme Toggle Button */}
-  {/* <button
-            onClick={() => setIsDark(!isDark)}
-            className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 text-sm dark:text-white"
-          >
-            {isDark ? "🌙 Dark" : "☀️ Light"}
-          </button> */}
+		<>
+
 
 
 			<button onClick={()=> navigate("/login")} className={`self-center px-8 py-3 rounded ${pathname== "/login"? "text-green-800" : ""}`}>Log in</button>
 			<button onClick={()=> navigate("/register")} className={`self-center px-8 py-3 rounded ${pathname== "/register"? "text-green-800" : ""}`}>Register</button>
-		</div>
+		</>
+        ) : (
+            <>
+            
+            <img
+                src={user.photoURL || "/user.png"}
+                alt="Profile"
+                className="w-10 h-10 rounded-full cursor-pointer border-2 border-amber-400"
+                data-tooltip-id="profile-tooltip"
+                data-tooltip-content={user.displayName || "User"}
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              />
+
+<Tooltip id="profile-tooltip" place="bottom" />
+              {dropdownOpen && (
+                <div className="absolute top-14 right-0 w-32 bg-white text-black rounded shadow z-50">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full px-4 py-2 text-sm text-red-600 hover:bg-red-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            
+            </>
+        )}
+        </div>
 		<button className="p-4 lg:hidden">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
 				<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>

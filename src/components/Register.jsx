@@ -14,7 +14,7 @@ e.preventDefault()
 const form = e.target;
 const formData = new FormData(form)
 
-const {email, password, ...restFormData} = Object.fromEntries(formData.entries())
+const {email, password, name, photo,...restFormData} = Object.fromEntries(formData.entries())
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
 if (!passwordRegex.test(password)) {
@@ -29,11 +29,13 @@ if (!passwordRegex.test(password)) {
 
 
 // create User in the firebase
-createUser(email, password)
+createUser(email, password,name,photo)
 .then(result => {
-   const user = result.user
+//    const user = result.user
 const userProfile = {
+    name,
         email,
+        photo,
         ...restFormData,
         creationTime: result.user?.metadata?.creationTime,
         lastSignInTime: result.user?.metadata?.lastSignInTime

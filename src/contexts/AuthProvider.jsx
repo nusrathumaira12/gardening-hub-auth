@@ -1,29 +1,79 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
-import Header from '../components/Header';
 
-const AuthProvider = ({children}) => {
+
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+
+  const createUser = async (email, password, name, photoURL) => {
+    setLoading(true);
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: photoURL || "/user.png",
+      })
+    
+
+setUser({
+   ...user, 
+   displayName: name, 
+   photoURL: photoURL || "/user.png" });
+
+    return user;
+  } catch (error) {
+    console.error("Error creating user:", error.message);
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
+
+const logout = () => {
+  setLoading(true);
+  return signOut(auth)
+    .then(() => {
+      setUser(null);
+      setLoading(false);
+})
+    .catch((error) => {
+      console.error("Logout Error:", error.message);
+      setLoading(false);
+    });
+};
+
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (loggedInUser) => {
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    } else {
+      setUser(null);
+    }
+    setLoading(false);
   
-    const createUser = (email, password) =>  {
+  });
+  return () => unsubscribe();
+}, []);
 
-return createUserWithEmailAndPassword(auth, email, password)
-    }
+const userInfo = {
+  createUser,
+  user,
+  setUser,
+  logout,
+  loading,
+}
 
-    const userInfo = {
-      createUser,
-      user,
-      setUser,
-    }
+return (
+  <AuthContext.Provider value={userInfo}>
 
-    return (
-     <AuthContext.Provider value={userInfo}>
-       
-        {children}
-     </AuthContext.Provider>
-    );
+    {children}
+  </AuthContext.Provider>
+);
 };
 
 export default AuthProvider;
