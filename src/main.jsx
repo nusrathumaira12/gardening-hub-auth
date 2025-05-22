@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       Component: Home
     },
     {
-      path: 'explore-gardeners',
+      path: 'gardeners',
       Component: ExploreGardeners
     },
     {

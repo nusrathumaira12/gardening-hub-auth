@@ -8,10 +8,23 @@ const Header = () => {
     const navigate = useNavigate()
     const {pathname} = useLocation()
     console.log(pathname)
+    // const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
+
+
+    // useEffect(() => {
+    //     const root = window.document.documentElement;
+    //     if (isDark) {
+    //       root.classList.add("dark");
+    //       localStorage.setItem("theme", "dark");
+    //     } else {
+    //       root.classList.remove("dark");
+    //       localStorage.setItem("theme", "light");
+    //     }
+    //   }, [isDark]);
     return (
-        <header className="p-4 bg-white text-gray-500 font-semibold">
+        <header className="p-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 font-semibold shadow">
 	<div className="container flex justify-between h-16 mx-auto">
-<div className='flex text-3xl font-bold items-center pt-3 text-green-900'>
+<div className='flex text-3xl font-bold items-center pt-3 text-green-900 dark:text-green-400'>
     <span className='text-green-900  text-4xl '><PiPlant /></span>Green<span className='text-amber-400'>T</span>alks
 </div>
 		
@@ -26,7 +39,7 @@ const Header = () => {
 			<li className="flex">
 				<NavLink
                 className="flex items-center px-4 -mb-1   text-gray-500 border-green-600"
-                to="/explore-gardeners"
+                to="/gardeners"
                 > Explore Gardeners</NavLink>
 			</li>
 
@@ -58,7 +71,18 @@ const Header = () => {
             }
 		
 		</ul>
+
 		<div className="items-center flex-shrink-0 hidden lg:flex">
+
+  {/* Theme Toggle Button */}
+  {/* <button
+            onClick={() => setIsDark(!isDark)}
+            className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 text-sm dark:text-white"
+          >
+            {isDark ? "🌙 Dark" : "☀️ Light"}
+          </button> */}
+
+
 			<button onClick={()=> navigate("/login")} className={`self-center px-8 py-3 rounded ${pathname== "/login"? "text-green-800" : ""}`}>Log in</button>
 			<button onClick={()=> navigate("/register")} className={`self-center px-8 py-3 rounded ${pathname== "/register"? "text-green-800" : ""}`}>Register</button>
 		</div>
