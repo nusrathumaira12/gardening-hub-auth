@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
     
@@ -110,7 +111,7 @@ const Header = () => {
             <img
                 src={user.photoURL || "/user.png"}
                 alt="Profile"
-                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400 "
+                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400 sm:justify-end "
                 data-tooltip-id="profile-tooltip"
                 data-tooltip-content={user.displayName || "User"}
                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -130,7 +131,10 @@ const Header = () => {
             
             </>
         )}
+
+<ThemeToggle />
         </div>
+
 		<button className="p-4 lg:hidden">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
 				<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
