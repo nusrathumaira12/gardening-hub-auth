@@ -22,6 +22,7 @@ import FeaturedGardeners from './components/FeaturedGardeners.jsx';
 import Header from './components/Header.jsx';
 import BrowseTips from './components/BrowseTips.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
+import TipDetails from './components/TipsDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -70,6 +71,13 @@ Component: AddTips
       path: 'shareTip',
       Component: ShareTip
     },
+    {
+      path: "/tips/:id",
+      element: <PrivateRoute><TipDetails /></PrivateRoute>,
+      loader: ({ params }) =>
+        fetch(`http://localhost:3000/tips/${params.id}`),
+    },
+    
     {
 path: 'login',
 Component: Login

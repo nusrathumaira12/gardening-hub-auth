@@ -2,7 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 const TipCard = ({ tip }) => {
-    const { image,
+    const navigate = useNavigate()
+    const {
+        _id,
+        image,
         Title,
         plantType,
         category,
@@ -10,12 +13,12 @@ const TipCard = ({ tip }) => {
        
 
     } = tip
-   const navigate = useNavigate()
+  
 
     return (
 
 
-        <tr className='border-2'>
+        <tr className="hover:bg-amber-100 transition">
             <td >
             <div className="font-bold">{ Title}</div>
                 </td>
@@ -48,7 +51,8 @@ const TipCard = ({ tip }) => {
            
            <td><button  
             onClick={() => navigate(`/tips/${tip._id}`)}
-           className="btn btn-sm  text-amber-500">👁 See More</button></td>
+           className="btn btn-sm border border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white transition">
+            👁 See More</button></td>
         </tr>
     );
 };

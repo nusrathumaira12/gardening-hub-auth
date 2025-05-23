@@ -20,15 +20,15 @@ const BrowseTips = () => {
 
 
     return (
-        <div className="overflow-x-auto border-2 border-amber-600">
+        <div className="overflow-x-auto border-2 border-green-600">
 
 
 <table className="table w-full ">
-        <thead>
+        <thead className='bg-amber-400 text-white'>
           <tr>
 
             <th>Title</th>
-            <th>image</th>
+            <th>Image</th>
             <th>Plant Type</th>
             <th>Category</th>
             <th>Difficulty</th>
