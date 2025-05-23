@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 
 const Register = () => {
     const {createUser} = useContext(AuthContext)
-   
+    const navigate = useNavigate(); 
+    const location = useLocation()
+    const from = location?.state?.from
 
     const handleRegister = e => {
 e.preventDefault()
@@ -61,6 +63,7 @@ const userProfile = {
                 timer: 1500
               });
               form.reset();
+              navigate(from ? from :"/")
         }
     })
 })
@@ -103,6 +106,7 @@ const userProfile = {
         showConfirmButton: false,
         position: 'top-end',
       });
+      navigate(from ? from :"/")
     })
     .catch((error) => {
       Swal.fire({
@@ -116,9 +120,9 @@ const userProfile = {
     return (
        
          
-          <div className="card bg-green-900  max-w-sm mx-auto shrink-0 shadow-2xl mt-[80px] text-white">
+          <div className="card bg-green-900  max-w-sm mx-auto shrink-0 shadow-2xl mt-[60px] text-white">
             <div className="card-body">
-            <h1 className="text-5xl font-bold">Register now!</h1>
+            <h1 className="text-4xl font-bold text-center">Register now!</h1>
               <form onSubmit={handleRegister} className="fieldset">
                 <label className="label text-white">Name</label>
                 <input type="text" name='name' className="input text-black" placeholder="Name"  />
@@ -130,7 +134,7 @@ const userProfile = {
                 <input type="password" name='password' className="input text-black" placeholder="******" />
 
                 <div>
-                <button className="btn border-none mt-4 bg-amber-400 text-white">Register</button></div>
+                <button className="btn border-none mt-4 bg-amber-400 text-white w-full hover:bg-amber-600">Register</button></div>
                 <p className="px-6 text-sm text-center text-white">Already have an account?
                         <NavLink to="/login" className="text-amber-600 hover:underline">Log in</NavLink>
                     </p>
@@ -138,7 +142,7 @@ const userProfile = {
                    
         <div className="divider mt-4 text-white">OR</div>
 
-<button onClick={handleGoogleSignIn} className="btn bg-red-500 w-full text-white">
+<button onClick={handleGoogleSignIn} className="btn bg-amber-600 w-full text-white">
   Continue with Google
 </button> 
               </form>

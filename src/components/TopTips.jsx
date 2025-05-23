@@ -50,6 +50,13 @@ useEffect(()=> {
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
                 {tip.description?.slice(0, 100)}...
               </p>
+              <div>
+              <div className="mt-2 text-sm text-green-700">
+  ❤️ {tip.totalLiked || 0} Likes
+</div>
+
+
+              </div>
               <Link to={`/tips/${tip._id}`} className="text-amber-500 hover:underline">
                 Read More →
               </Link>

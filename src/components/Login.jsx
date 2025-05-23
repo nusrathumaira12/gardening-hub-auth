@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { AuthContext } from '../contexts/AuthContext';
 import Swal from 'sweetalert2';
@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
 const Login = () => {
 const provider = new GoogleAuthProvider()
 const {setUser} = useContext(AuthContext)
+const navigate = useNavigate(); 
+const location = useLocation()
+const from = location?.state?.from
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -29,7 +32,7 @@ const {setUser} = useContext(AuthContext)
         showConfirmButton: false,
         timer: 1500,
       });
-
+      navigate(from ? from :"/")
 
   })
   .catch((error) => {
@@ -54,7 +57,7 @@ signInWithPopup(auth, provider)
       showConfirmButton: false,
       timer: 1500,
     });
-
+    navigate(from ? from :"/")
 })
 .catch((error) => {
     Swal.fire({
@@ -67,28 +70,28 @@ signInWithPopup(auth, provider)
     }
 
     return (
-        <div className="card bg-base-100  max-w-sm mx-auto shrink-0 shadow-2xl my-10">
+        <div className="card my-10  bg-green-900  max-w-sm mx-auto shrink-0 shadow-2xl mt-[80px] text-white">
         <div className="card-body">
-        <h1 className="text-5xl font-bold">Login Now</h1>
+        <h1 className="text-4xl font-bold text-center">Login Now</h1>
         <p className="text-sm text-center dark:text-gray-600">Don't have account?{' '}
-            <NavLink to="/register" className="text-blue-600 focus:underline   hover:underline">Register here</NavLink>
+            <NavLink to="/register" className="focus:underline   hover:underline text-amber-600">Register here</NavLink>
         </p>
           <form onSubmit={handleSubmit} className="fieldset">
            
             <label className="label">Email</label>
-            <input type="email" name='email' className="input" placeholder="Email" />
+            <input type="email" name='email' className="input text-black" placeholder="Email" />
            
             <label className="label">Password</label>
-            <input type="password" name='password' className="input" placeholder="******" />
+            <input type="password" name='password' className="input text-black" placeholder="******" />
             <div className="my-2">
                 <a className="link link-hover">Forgot password?</a>
                 </div>
-            <button className="btn btn-neutral w-full mt-4">Login</button>
+            <button className="btn border-none mt-4 bg-amber-400 text-white w-full">Login</button>
 
             
           </form>
           <div className="divider">OR</div>
-          <button onClick={handleGoogleLogin} className="btn bg-red-500 text-white hover:bg-red-600 w-full">
+          <button onClick={handleGoogleLogin} className="btn bg-amber-600  text-white hover:bg-amber-700 w-full">
           Continue with Google
         </button>
         </div>

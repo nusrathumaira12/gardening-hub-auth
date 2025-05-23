@@ -4,7 +4,7 @@ import { PiPlant } from 'react-icons/pi';
 
 const Footer = () => {
   return (
-    <footer className="bg-green-900  text-white mt-16 py-10 px-4 text-center mx-auto">
+    <footer className="bg-green-900  text-white mt-16 py-10 px-4 text-center mx-auto w-full">
       <div className="mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center justify-between">
  {/* Logo and Name */}
  <div className="flex flex-col items-center md:items-start">

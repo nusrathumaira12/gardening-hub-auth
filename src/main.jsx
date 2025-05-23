@@ -10,8 +10,8 @@ import MainLayout from './layouts/MainLayout.jsx';
 import Home from './components/Home.jsx';
 import AddTips from './components/AddTips.jsx';
 import UpdateTips from './components/UpdateTips.jsx';
-import AddGardener from './components/AddGardener.jsx';
-import ActiveGardener from './components/ActiveGardener.jsx';
+
+
 import ShareTip from './components/ShareTip.jsx';
 import TipCard from './components/TipCard.jsx';
 import Login from './components/Login.jsx';
@@ -23,6 +23,9 @@ import Header from './components/Header.jsx';
 import BrowseTips from './components/BrowseTips.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import TipDetails from './components/TipsDetails.jsx';
+import PrivateRoute from './routes/PrivateRoute.jsx';
+import MyTips from './components/MyTips.jsx';
+import UpdateTip from './components/UpdateTip.jsx';
 
 
 const router = createBrowserRouter([
@@ -58,15 +61,9 @@ Component: AddTips
       path: 'updateTips',
       Component: UpdateTips
     },
-    {
-      path: 'activeGardener',
-      Component: ActiveGardener
-    },
+  
 
-    {
-      path: 'addGardener',
-      Component: AddGardener
-    },
+  
     {
       path: 'shareTip',
       Component: ShareTip
@@ -76,6 +73,19 @@ Component: AddTips
       element: <PrivateRoute><TipDetails /></PrivateRoute>,
       loader: ({ params }) =>
         fetch(`http://localhost:3000/tips/${params.id}`),
+    },
+    
+    { 
+      path: '/my-tips', 
+      element: 
+        <PrivateRoute>
+          <MyTips />
+        </PrivateRoute>
+      
+    },
+    {
+      path: '/update-tip/:id',
+      element: <PrivateRoute><UpdateTip /></PrivateRoute>
     },
     
     {

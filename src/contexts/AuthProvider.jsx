@@ -34,31 +34,33 @@ setUser({
   }
 };
 
-const logout = () => {
+const logout = async() => {
   setLoading(true);
-  return signOut(auth)
-    .then(() => {
+  try {
+  await signOut(auth)
+   
       setUser(null);
-      setLoading(false);
-})
-    .catch((error) => {
+  } catch (error) {
+     
+
       console.error("Logout Error:", error.message);
+    } finally {
+     
+      setLoading(false);
+    }
+  }
+
+   
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (loggedInUser) => {
+      setUser(loggedInUser || null);
       setLoading(false);
     });
-};
 
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (loggedInUser) => {
-    if (loggedInUser) {
-      setUser(loggedInUser);
-    } else {
-      setUser(null);
-    }
-    setLoading(false);
-  
-  });
-  return () => unsubscribe();
-}, []);
+    return () => unsubscribe();
+  }, []);
 
 const userInfo = {
   createUser,

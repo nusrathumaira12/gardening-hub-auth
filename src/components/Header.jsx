@@ -6,6 +6,7 @@ import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 
 const Header = () => {
+    
    const {user, logout} =useContext(AuthContext)
    const [dropdownOpen, setDropdownOpen] = useState(false);
    const dropdownRef = useRef();
@@ -109,7 +110,7 @@ const Header = () => {
             <img
                 src={user.photoURL || "/user.png"}
                 alt="Profile"
-                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400"
+                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400 "
                 data-tooltip-id="profile-tooltip"
                 data-tooltip-content={user.displayName || "User"}
                 onClick={() => setDropdownOpen(!dropdownOpen)}

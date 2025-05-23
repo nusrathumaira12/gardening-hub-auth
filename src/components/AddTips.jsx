@@ -9,7 +9,7 @@ const AddTips = () => {
   useEffect(() => {
     const fetchTips = async () => {
       try {
-        const response = await fetch("/api/tips"); // Update this to your API route
+        const response = await fetch("/api/tips"); 
         const data = await response.json();
         const publicTips = data.filter((tip) => tip.status === "public");
         setTips(publicTips);

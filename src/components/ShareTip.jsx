@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router';
 
 const ShareTip = () => {
+const {user} = useContext(AuthContext)
+const navigate = useNavigate();
 
 
     const handleSubmit = e => {
@@ -10,7 +14,9 @@ const ShareTip = () => {
         const formData = new FormData(form)
         // console.log(formData.entries())
         const newTip = Object.fromEntries(formData.entries())
-        console.log(newTip)
+       
+        newTip.email = user?.email;
+        newTip.userName = user?.displayName;
 
 
         // send tip data to the db
@@ -24,7 +30,7 @@ const ShareTip = () => {
         .then(res => res.json())
         .then(data => {
             if(data.insertedId){
-                console.log('added Successfully!')
+               
                 Swal.fire({
                     title: "Your valuable tips added successfully!",
                     icon: "success",
@@ -32,15 +38,16 @@ const ShareTip = () => {
                   });
 
                   form.reset()
+                  navigate('/my-tips');
             }
         })
     }
     return (
-        <div className="max-w-5xl mx-auto mt-10 p-6 bg-gray-200 shadow rounded bg-">
-            <h2 className="text-2xl font-semibold mb-4 text-green-950">➕ Share a Garden Tip</h2>
+        <div className="max-w-5xl mx-auto mt-12  p-5 rounded-lg bg-green-700 text-black shadow transform ">
+            <h2 className="text-3xl font-semibold mb-4 text-center w-2/5 mx-auto text-white bg-amber-400 rounded-xl p-2 mb-8">Share a Garden Tip</h2>
 
             <form onSubmit={handleSubmit}>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 bg-green-900'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                         <label className="label">Title</label>
                         <input type="text" name='Title' className="input w-full" placeholder="Title " />
@@ -48,7 +55,7 @@ const ShareTip = () => {
 
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
                         <label className="label">Plant Type</label>
-                        <input type="text" name='plantType' className="input w-full" placeholder="Tips " />
+                        <input type="text" name='plantType' className="input w-full" placeholder="Plant Type" />
                     </fieldset>
                     <fieldset className="fieldset bg-base-200 border border-base-300 rounded-box p-4">
   <label className="label">
@@ -57,8 +64,7 @@ const ShareTip = () => {
   <select
     name="difficulty"
     className="select select-bordered w-full"
-    // value={formData.difficulty}
-    // onChange={handleChange}
+   
     required
   >
     <option value="Easy">Easy</option>
@@ -82,8 +88,7 @@ const ShareTip = () => {
   <select
     name="category"
     className="select select-bordered w-full"
-    // value={formData.category}
-    // onChange={handleChange}
+    
     required
   >
     <option value="Composting">Composting</option>
@@ -116,13 +121,14 @@ const ShareTip = () => {
 
                 </div>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
-                <label className="label">User Name & Email</label>
+                <label className="label font-semibold">User Name & Email</label>
                 <div className="bg-gray-100 text-sm p-2 rounded">
-          <p>name email</p>
+                <p><strong>Name:</strong> {user?.displayName}</p>
+                <p><strong>Email:</strong> {user?.email}</p>
         </div>
         </fieldset>
 
-        <input type="submit" className='btn w-full' value="Share Tip" />
+        <input type="submit" className='btn w-full rounded-2xl btn-success text-white bg-amber-400' value="Share Tip" />
             </form>
         </div>
     );

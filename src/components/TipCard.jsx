@@ -26,7 +26,7 @@ const TipCard = ({ tip }) => {
      <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                             <img
-                                src={image}
+                                src={image || '/placeholder.jpg'}
                                 alt={Title}
                             />
                         </div>
@@ -50,7 +50,7 @@ const TipCard = ({ tip }) => {
             </td>
            
            <td><button  
-            onClick={() => navigate(`/tips/${tip._id}`)}
+            onClick={() => navigate(`/tips/${_id}`)}
            className="btn btn-sm border border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white transition">
             👁 See More</button></td>
         </tr>
