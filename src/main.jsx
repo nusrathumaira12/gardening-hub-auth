@@ -21,12 +21,14 @@ import AuthProvider from './contexts/AuthProvider.jsx';
 import FeaturedGardeners from './components/FeaturedGardeners.jsx';
 import Header from './components/Header.jsx';
 import BrowseTips from './components/BrowseTips.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
    Component: MainLayout,
+   errorElement: <ErrorPage></ErrorPage>,
    children: [
     {
       index: true,

@@ -5,6 +5,7 @@ import FeaturedGardeners from './FeaturedGardeners';
 import Banner from './Banner';
 import TopTips from './TopTips';
 import Reviews from './Reviews';
+import ContactSection from './ContactSection';
 
 const Home = () => {
    
@@ -14,7 +15,7 @@ const Home = () => {
           <FeaturedGardeners></FeaturedGardeners>
           <TopTips></TopTips>
          <Reviews></Reviews>
-       
+       <ContactSection></ContactSection>
         </div>
     );
 };

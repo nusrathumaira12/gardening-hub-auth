@@ -32,7 +32,8 @@ const BrowseTips = () => {
             <th>Plant Type</th>
             <th>Category</th>
             <th>Difficulty</th>
-            <th><button>See More</button></th>
+            <th>Action</th>
+
           </tr>
         </thead>
            
