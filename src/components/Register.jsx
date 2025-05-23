@@ -125,13 +125,13 @@ const userProfile = {
             <h1 className="text-4xl font-bold text-center">Register now!</h1>
               <form onSubmit={handleRegister} className="fieldset">
                 <label className="label text-white">Name</label>
-                <input type="text" name='name' className="input text-black" placeholder="Name"  />
+                <input type="text" name='name' className="input text-black dark:text-white" placeholder="Name"  />
                 <label className="label text-white">Email</label>
-                <input type="email" name='email' className="input text-black" placeholder="Email" />
+                <input type="email" name='email' className="input text-black dark:text-white" placeholder="Email" />
                 <label className="labe text-white">PhotoURL</label>
-                <input type="PhotoURL" name='photo' className="input text-black" placeholder="PhotoURL" />
+                <input type="PhotoURL" name='photo' className="input text-black dark:text-white" placeholder="PhotoURL" />
                 <label className="label text-white">Password</label>
-                <input type="password" name='password' className="input text-black" placeholder="******" />
+                <input type="password" name='password' className="input text-black dark:text-white" placeholder="******" />
 
                 <div>
                 <button className="btn border-none mt-4 bg-amber-400 text-white w-full hover:bg-amber-600">Register</button></div>

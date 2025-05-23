@@ -43,7 +43,7 @@ const navigate = useNavigate();
         })
     }
     return (
-        <div className="max-w-5xl mx-auto mt-12  p-5 rounded-lg bg-green-700 text-black shadow transform ">
+        <div className="max-w-5xl mx-auto mt-12  p-5 rounded-lg bg-green-700  text-black dark:text-white shadow transform ">
             <h2 className="text-3xl font-semibold mb-4 text-center w-2/5 mx-auto text-white bg-amber-400 rounded-xl p-2 mb-8">Share a Garden Tip</h2>
 
             <form onSubmit={handleSubmit}>
@@ -122,7 +122,7 @@ const navigate = useNavigate();
                 </div>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border my-6 p-4">
                 <label className="label font-semibold">User Name & Email</label>
-                <div className="bg-gray-100 text-sm p-2 rounded">
+                <div className="bg-gray-100 text-sm p-2 rounded dark:text-black">
                 <p><strong>Name:</strong> {user?.displayName}</p>
                 <p><strong>Email:</strong> {user?.email}</p>
         </div>

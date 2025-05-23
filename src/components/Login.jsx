@@ -73,16 +73,16 @@ signInWithPopup(auth, provider)
         <div className="card my-10  bg-green-900  max-w-sm mx-auto shrink-0 shadow-2xl mt-[80px] text-white">
         <div className="card-body">
         <h1 className="text-4xl font-bold text-center">Login Now</h1>
-        <p className="text-sm text-center dark:text-gray-600">Don't have account?{' '}
+        <p className="text-sm text-center dark:text-gray-200">Don't have account?{' '}
             <NavLink to="/register" className="focus:underline   hover:underline text-amber-600">Register here</NavLink>
         </p>
           <form onSubmit={handleSubmit} className="fieldset">
            
             <label className="label">Email</label>
-            <input type="email" name='email' className="input text-black" placeholder="Email" />
+            <input type="email" name='email' className="input text-black dark:text-white" placeholder="Email" />
            
             <label className="label">Password</label>
-            <input type="password" name='password' className="input text-black" placeholder="******" />
+            <input type="password" name='password' className="input text-black dark:text-white" placeholder="******" />
             <div className="my-2">
                 <a className="link link-hover">Forgot password?</a>
                 </div>
