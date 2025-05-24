@@ -12,7 +12,7 @@ const navigate = useNavigate();
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form)
-        // console.log(formData.entries())
+       
         const newTip = Object.fromEntries(formData.entries())
        
         newTip.email = user?.email;
@@ -44,7 +44,7 @@ const navigate = useNavigate();
     }
     return (
         <div className="max-w-5xl mx-auto mt-12  p-5 rounded-lg bg-green-700  text-black dark:text-white shadow transform ">
-            <h2 className="text-3xl font-semibold mb-4 text-center w-2/5 mx-auto text-white bg-amber-400 rounded-xl p-2 mb-8">Share a Garden Tip</h2>
+            <h2 className="text-3xl font-semibold text-center w-2/5 mx-auto text-white bg-amber-400 rounded-xl p-2 mb-8">Share a Garden Tip</h2>
 
             <form onSubmit={handleSubmit}>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>

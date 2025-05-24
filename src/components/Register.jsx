@@ -33,7 +33,7 @@ if (!passwordRegex.test(password)) {
 // create User in the firebase
 createUser(email, password,name,photo)
 .then(result => {
-//    const user = result.user
+
 const userProfile = {
     name,
         email,
@@ -53,7 +53,7 @@ const userProfile = {
     })
     .then(res => res.json())
     .then(data => {
-        // console.log('after profile save', data)
+        
         if(data.insertedId){
             Swal.fire({
                 position: "top-end",

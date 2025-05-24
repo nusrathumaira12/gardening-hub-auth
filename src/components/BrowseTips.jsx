@@ -45,7 +45,7 @@ const BrowseTips = () => {
 
 
 
-        <div className="overflow-x-auto border-2 border-green-600">
+        <div className="overflow-x-auto border-2 border-green-600 mt-8">
 
 
 <table className="table w-full ">

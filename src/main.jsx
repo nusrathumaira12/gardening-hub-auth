@@ -18,8 +18,8 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import ExploreGardeners from './components/ExploreGardeners.jsx';
 import AuthProvider from './contexts/AuthProvider.jsx';
-import FeaturedGardeners from './components/FeaturedGardeners.jsx';
-import Header from './components/Header.jsx';
+
+
 import BrowseTips from './components/BrowseTips.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import TipDetails from './components/TipsDetails.jsx';
@@ -36,8 +36,9 @@ const router = createBrowserRouter([
    children: [
     {
       index: true,
+      Component: Home,
       loader: ()=> fetch('http://localhost:3000/tips'),
-      Component: Home
+      hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
     },
     {
       path: 'gardeners',
@@ -46,8 +47,8 @@ const router = createBrowserRouter([
     {
       path: "/browse-tips",
      Component: BrowseTips,
-      loader:  () => fetch('http://localhost:3000/tips')
-        
+      loader:  () => fetch('http://localhost:3000/tips'),
+      hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
       
     },
     {
@@ -73,6 +74,7 @@ Component: AddTips
       element: <PrivateRoute><TipDetails /></PrivateRoute>,
       loader: ({ params }) =>
         fetch(`http://localhost:3000/tips/${params.id}`),
+      hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
     },
     
     { 

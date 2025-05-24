@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-// import { Eye } from "lucide-react"; // Optional icon library
+
 
 const AddTips = () => {
   const [tips, setTips] = useState([]);
