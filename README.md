@@ -1,12 +1,47 @@
-# React + Vite
+# 🌿 GreenTalks - Gardeners & Tips Community
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GreenTalks is a community platform that connects gardening enthusiasts. Users can explore gardening tips, connect with gardeners, and share their own advice or experience.
 
-Currently, two official plugins are available:
+🔗 **Live Site**:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---   https://gardening-auth-project.web.app/
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Project Features
+🔐 Firebase authentication (Email/password & Google login)
+
+🌿 Browse & share gardening tips with like button functionality
+
+🌟 Top trending tips based on likes
+
+🧑‍🌾 Explore gardeners section to discover users
+
+🛡️ Protected routes and toast notifications using SweetAlert
+
+🎨 Responsive UI with light/dark theme toggle
+
+---
+
+## 📖 Project Description
+
+GreenTalks is a gardening community web application where users can explore tips from others, share their own gardening wisdom, and interact through likes. It includes authentication, profile handling, trending sections, and dark mode—all wrapped in a responsive user interface. Ideal for plant lovers to connect and grow together!
+
+---
+
+## 🛠️ Tech Stack
+
+- React.js + React Router 
+- Firebase Authentication
+- Tailwind CSS
+- SweetAlert2
+- React Icons
+- MongoDB 
+- Express.js 
+
+## 🔐 Authentication Features
+
+- Google Sign-in & Sign-out
+- Email & Password Login/Register
+- Persistent login using `onAuthStateChanged`
+- Protected Routes with access control
