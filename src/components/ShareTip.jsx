@@ -20,7 +20,7 @@ const navigate = useNavigate();
 
 
         // send tip data to the db
-        fetch('http://localhost:3000/tips', {
+        fetch('https://gardening-hub-server-seven.vercel.app/tips', {
             method: 'POST',
             headers: {
                 'Content-type' : 'application/json'

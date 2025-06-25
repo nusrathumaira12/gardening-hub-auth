@@ -6,7 +6,7 @@ const [gardeners, setGardeners] = useState([])
 const [loading, setLoading] = useState(true)
 
 useEffect(()=> {
-fetch("http://localhost:3000/gardeners")
+fetch("https://gardening-hub-server-seven.vercel.app/gardeners")
 .then(res => res.json())
 .then(data => {
    

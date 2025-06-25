@@ -91,7 +91,7 @@ signInWithPopup(auth, provider)
             
           </form>
           <div className="divider">OR</div>
-          <button onClick={handleGoogleLogin} className="btn bg-amber-600  text-white hover:bg-amber-700 w-full">
+          <button onClick={handleGoogleLogin} className="btn bg-orange-600  text-white hover:bg-orange-700 w-full">
           Continue with Google
         </button>
         </div>

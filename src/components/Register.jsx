@@ -23,7 +23,7 @@ if (!passwordRegex.test(password)) {
   return Swal.fire({
     icon: 'error',
     title: 'Invalid Password',
-    text: 'Password must be at least 8 characters long and include uppercase, lowercase, and a special character.',
+    text: 'Password must be at least 8 characters long , include uppercase, lowercase, and a special character.',
   });
 }
 
@@ -44,7 +44,7 @@ const userProfile = {
     }
 
     // save profile info in the db
-    fetch('http://localhost:3000/users', {
+    fetch('https://gardening-hub-server-seven.vercel.app/users', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
@@ -93,7 +93,7 @@ const userProfile = {
             };
 
      // Save to DB
-     fetch('http://localhost:3000/users', {
+     fetch('https://gardening-hub-server-seven.vercel.app/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userProfile),

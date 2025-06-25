@@ -8,7 +8,7 @@ const TipDetails = () => {
   const [likes, setLikes] = useState(tip.totalLiked || 0);
 
   const handleLike = () => {
-    fetch(`http://localhost:3000/tips/like/${tip._id}`, {
+    fetch(`https://gardening-hub-server-seven.vercel.app/tips/like/${tip._id}`, {
       method: "PATCH",
     })
       .then(res => res.json())

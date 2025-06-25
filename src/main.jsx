@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     {
       index: true,
       Component: Home,
-      loader: ()=> fetch('http://localhost:3000/tips'),
+      loader: ()=> fetch('https://gardening-hub-server-seven.vercel.app/tips'),
       hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
     },
     {
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     {
       path: "/browse-tips",
      Component: BrowseTips,
-      loader:  () => fetch('http://localhost:3000/tips'),
+      loader:  () => fetch('https://gardening-hub-server-seven.vercel.app/tips'),
       hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
       
     },
@@ -73,7 +73,7 @@ Component: AddTips
       path: "/tips/:id",
       element: <PrivateRoute><TipDetails /></PrivateRoute>,
       loader: ({ params }) =>
-        fetch(`http://localhost:3000/tips/${params.id}`),
+        fetch(`https://gardening-hub-server-seven.vercel.app/tips/${params.id}`),
       hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
     },
     

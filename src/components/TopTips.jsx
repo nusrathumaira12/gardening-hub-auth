@@ -6,7 +6,7 @@ const TopTips = () => {
 
 useEffect(()=> {
 
-    fetch('http://localhost:3000/top-tips')
+    fetch('https://gardening-hub-server-seven.vercel.app/top-tips')
     .then(res => res.json())
     .then(data => setTips(data))
 }, [])

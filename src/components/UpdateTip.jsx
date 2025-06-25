@@ -10,7 +10,7 @@ const UpdateTip = () => {
     const [tip, setTip] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/tips/${id}`)
+        fetch(`https://gardening-hub-server-seven.vercel.app/tips/${id}`)
           .then(res => res.json())
           .then(data => setTip(data));
       }, [id]);
@@ -28,7 +28,7 @@ const UpdateTip = () => {
           description: form.description.value,
         };
 
-        fetch(`http://localhost:3000/tips/${id}`,{
+        fetch(`https://gardening-hub-server-seven.vercel.app/tips/${id}`,{
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',

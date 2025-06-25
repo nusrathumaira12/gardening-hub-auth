@@ -10,7 +10,7 @@ const MyTips = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-tips?email=${user.email}`)
+      fetch(`https://gardening-hub-server-seven.vercel.app/my-tips?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyTips(data));
     }
@@ -26,7 +26,7 @@ const MyTips = () => {
       cancelButtonColor: '#d33',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/tips/${id}`, {
+        fetch(`https://gardening-hub-server-seven.vercel.app/tips/${id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
