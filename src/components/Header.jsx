@@ -115,22 +115,30 @@ const Header = () => {
                     {
 
                         user && <>
-                            <li className="flex">
+
+<li className="flex">
+                                <NavLink
+                                    className="flex items-center px-4 -mb-1  text-gray-500 border-green-600 dark:text-white"
+                                    onClick={() => setMenuOpen(false)}
+                                    to="/dashboard"
+                                >Dashboard</NavLink>
+                            </li>
+                            {/* <li className="flex">
                                 <NavLink
                                     className="flex items-center px-4 -mb-1  text-gray-500 border-green-600 dark:text-white"
                                     onClick={() => setMenuOpen(false)}
                                     to="/shareTip"
                                 >Share a Garden Tip</NavLink>
-                            </li>
+                            </li> */}
 
 
-                            <li className="flex">
+                            {/* <li className="flex">
                                 <NavLink
                                     className="flex items-center px-4 -mb-1   text-gray-500 border-green-600 dark:text-white"
                                     onClick={() => setMenuOpen(false)}
                                     to="/my-tips"
                                 > My Tips</NavLink>
-                            </li>
+                            </li> */}
 
                         </>
                     }

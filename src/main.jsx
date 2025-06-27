@@ -30,6 +30,8 @@ import AboutUs from './components/AboutUs.jsx';
 import TermsOfService from './components/TermsOfService.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import CookiePolicy from './components/CookiePolicy.jsx';
+import Dashboard from './components/Dashboard.jsx';
+import Overview from './components/Overview.jsx';
 
 
 const router = createBrowserRouter([
@@ -48,13 +50,7 @@ const router = createBrowserRouter([
       path: 'gardeners',
       Component: ExploreGardeners
     },
-    {
-      path: "/browse-tips",
-     Component: BrowseTips,
-      loader:  () => fetch('https://gardening-hub-server-seven.vercel.app/tips'),
-      hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
-      
-    },
+   
     {
 path: "/about",
 Component: AboutUs
@@ -83,8 +79,9 @@ Component: AddTips
       path: 'updateTips',
       Component: UpdateTips
     },
+   
   
-
+    
   
     {
       path: 'shareTip',
@@ -118,9 +115,32 @@ Component: Login
     {
       path: 'register',
       Component: Register
-    }
+    },
+    {
+      path: "/browse-tips",
+      Component: BrowseTips, 
+      loader: () => fetch('https://gardening-hub-server-seven.vercel.app/tips'),
+      hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
+    },
+    
    
    ]
+  },
+
+
+  {
+    path: '/dashboard',
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      { index: true, Component: Overview },
+      { path: 'browse-tips', Component: BrowseTips, loader: () => fetch('https://gardening-hub-server-seven.vercel.app/tips') },
+      { path: 'share-tip', Component: ShareTip },
+      { path: 'my-tips', Component: MyTips },
+    ],
   },
 ]);
 
