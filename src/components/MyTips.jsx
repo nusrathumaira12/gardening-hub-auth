@@ -41,16 +41,16 @@ const MyTips = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-6 mt-10 bg-amber-200">
+    <div className="max-w-7xl mx-auto p-6 mt-10 bg-amber-200 dark:text-green-900">
       <h2 className="text-3xl font-bold text-green-800 mb-6 text-center bg-amber-200">🌱 My Shared Tips</h2>
 
       {myTips.length === 0 ? (
         <p className="text-gray-600 text-center">You haven't added any tips yet.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="table w-full bg-white shadow rounded">
+        <div className="overflow-x-auto dark:bg-green-500">
+          <table className="table w-full bg-white shadow rounded ">
             <thead>
-              <tr className="bg-green-100 text-green-900">
+              <tr className="bg-green-100 text-green-900 dark:text-green-900 dark:bg-green-500">
                 <th>Title</th>
                 <th>Plant Type</th>
                 <th>Category</th>
