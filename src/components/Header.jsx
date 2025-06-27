@@ -68,12 +68,10 @@ const Header = () => {
 
 
     return (
-        <header className="p-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 font-semibold shadow">
-            <div className="container flex justify-between h-20 mx-auto">
+        <header className="py-3 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-200 font-semibold shadow">
+            <div className="flex md:mx-6 mx-2 justify-between h-15">
               
-                <div>
-
-                </div>
+                
                 <div className='flex text-3xl font-bold items-center pt-3 text-green-900 dark:text-green-400'>
                     <span className='text-green-900  text-4xl '><PiPlant /></span>Green<span className='text-amber-400'>T</span>alks
                 </div>
@@ -103,6 +101,17 @@ const Header = () => {
                             to="/browse-tips"
                         > Browse Tips</NavLink>
                     </li>
+
+                    <li className="flex">
+  <NavLink
+    to="/about"
+    onClick={() => setMenuOpen(false)}
+    className="flex items-center px-4 -mb-1 text-gray-500 border-green-600 dark:text-white"
+  >
+    About Us
+  </NavLink>
+</li>
+
                     {
 
                         user && <>
@@ -132,7 +141,7 @@ const Header = () => {
                             <li className="lg:hidden">
                                 <NavLink
                                     to="/login"
-                                    className="block w-full text-left px-4 py-2 text-gray-700 dark:text-white"
+                                    className="block w-full text-left  px-4 py-2 text-gray-700 dark:text-white"
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     Log In
@@ -154,13 +163,13 @@ const Header = () => {
 
                 </ul>
 
-                <div className="relative flex items-center space-x-3" ref={dropdownRef}>
+                <div className="relative flex items-center justify-end w-full md:w-auto sm:mr-0 space-x-3" ref={dropdownRef}>
 
 
                     <button
                         onClick={toggleTheme}
                         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                        className="w-8 h-8 rounded-full bg-gray-500 dark:bg-green-700 hover:bg-gray-700 dark:hover:bg-green-600 transition-colors"
+                        className="w-9 h-9 rounded-full bg-gray-500 dark:bg-green-700 hover:bg-gray-700 dark:hover:bg-green-600 transition-colors sm:justify-end"
                     >
                         {theme === 'dark' ? (
                             <span className="text-yellow-300 text-xl">☀️</span>
@@ -171,12 +180,12 @@ const Header = () => {
 
                     {!user ? (
 
-                        <div className="hidden lg:flex space-x-3">
+                        <div className="hidden lg:flex  space-x-3">
 
 
 
-                            <button onClick={() => navigate("/login")} className={`self-center px-8 py-3  rounded ${pathname == "/login" ? "text-green-800" : ""}`}>Log in</button>
-                            <button onClick={() => navigate("/register")} className={`self-center px-8 py-3 rounded ${pathname == "/register" ? "text-green-800" : ""}`}>Register</button>
+                            <button onClick={() => navigate("/login")} className={`self-center btn py-3  rounded ${pathname == "/login" ? "text-green-800" : ""}`}>Log in</button>
+                            <button onClick={() => navigate("/register")} className={`self-center btn py-3  rounded ${pathname == "/register" ? "text-green-800" : ""}`}>Register</button>
                         </div>
 
                     ) : (
@@ -187,7 +196,7 @@ const Header = () => {
                             <img
                                 src={user.photoURL || "/user.png"}
                                 alt="Profile"
-                                className="w-11 h-11 rounded-full cursor-pointer border-2 border-amber-400 sm:justify-end "
+                                className="w-11 h-11 rounded-full md:mr-3 sm:justify-end cursor-pointer border-2 border-amber-400 "
                                 data-tooltip-id="profile-tooltip"
                                 data-tooltip-content={user.displayName || "User"}
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -195,7 +204,7 @@ const Header = () => {
 
                             <Tooltip id="profile-tooltip" place="bottom" />
                             {dropdownOpen && (
-                                <div className="absolute top-14 right-0 w-32 bg-white text-black rounded shadow z-50">
+                                <div className="absolute  top-14 right-0 w-32 bg-white text-black rounded shadow z-50">
                                     <button
                                         onClick={handleLogout}
                                         className="w-full px-4 py-2 text-sm text-red-600 hover:bg-red-100"

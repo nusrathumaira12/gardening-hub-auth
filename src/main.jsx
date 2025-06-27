@@ -26,6 +26,10 @@ import TipDetails from './components/TipsDetails.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
 import MyTips from './components/MyTips.jsx';
 import UpdateTip from './components/UpdateTip.jsx';
+import AboutUs from './components/AboutUs.jsx';
+import TermsOfService from './components/TermsOfService.jsx';
+import PrivacyPolicy from './components/PrivacyPolicy.jsx';
+import CookiePolicy from './components/CookiePolicy.jsx';
 
 
 const router = createBrowserRouter([
@@ -51,6 +55,23 @@ const router = createBrowserRouter([
       hydrateFallbackElement: <div className="text-xl font-bold mx-auto justify-center">Loading.......</div>
       
     },
+    {
+path: "/about",
+Component: AboutUs
+    },
+    {
+      path: "/terms",
+      Component: TermsOfService
+          },
+
+          {
+            path: "/privacy",
+            Component: PrivacyPolicy
+                },
+                {
+                  path: "/cookie",
+                  Component: CookiePolicy
+                      },
     {
 path: 'addTips',
 Component: AddTips
